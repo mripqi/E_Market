@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
 
-export default function ButtonComponent({handleClick, text, color}) {
+export default function ButtonComponent({handleClick, text, color, textColor}) {
   return (
     <TouchableOpacity
       onPress={() => handleClick(text)}
@@ -16,7 +16,7 @@ export default function ButtonComponent({handleClick, text, color}) {
           backgroundColor: color,
           alignItems: 'center',
         }}>
-        <Text style={styles.textList}>{text}</Text>
+        <Text style={{color: textColor, fontSize: 16}}>{text}</Text>
       </View>
     </TouchableOpacity>
   );

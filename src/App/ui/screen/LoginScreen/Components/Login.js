@@ -46,27 +46,33 @@ const Login = ({navigation}) => {
       style={styles.backgroundImage}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}>
+        style={styles.keyboardContainer}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.inner}>
-            <Text style={styles.judul}>{Constants.Login_Title}</Text>
-            <TextInput
-              placeholder="Email"
-              // value={Loginreducer.email}
-              // onChangeText={e => onInputChange(e, 'email')}
-            />
-            <Text style={styles.judul}>{Constants.Login_Title}</Text>
-            <TextInput
-              placeholder="Password"
-              // value={Loginreducer.password}
-              // onChangeText={e => onInputChange(e, 'password')}
-              secureTextEntry={true}
-            />
-            <Button
-              handleClick={() => navigation.navigate('Home')}
-              text={Constants.Login}
-              color={'white'}
-            />
+          <View style={styles.container}>
+            <Text style={styles.judul}>
+              {Constants.Welcome + ' ' + Constants.App}
+            </Text>
+            <View style={styles.inner}>
+              <Text style={styles.judul}>{Constants.Email}</Text>
+              <TextInput
+                placeholder={Constants.Email}
+                // value={Loginreducer.email}
+                // onChangeText={e => onInputChange(e, 'email')}
+              />
+              <Text style={styles.judul}>{Constants.Password}</Text>
+              <TextInput
+                placeholder={Constants.Password}
+                // value={Loginreducer.password}
+                // onChangeText={e => onInputChange(e, 'password')}
+                secureTextEntry={true}
+              />
+              <Button
+                handleClick={() => navigation.navigate('Home')}
+                text={Constants.Masuk}
+                textColor={'white'}
+                color={'#3edbf0'}
+              />
+            </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
@@ -75,9 +81,12 @@ const Login = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  keyboardContainer: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    flexDirection: 'column-reverse',
+    justifyContent: 'space-between',
   },
   inner: {
     justifyContent: 'center',

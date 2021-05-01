@@ -5,7 +5,11 @@ const Home_Text =
   ' Edit to change this screen and then come back to see your edits.';
 const Email = 'Email';
 const Password = 'Password';
-export const backgroundLogin = 'https://i.ibb.co/hcMj0wv/images.jpg';
+const App = 'E-Market';
+const Welcome = 'Welcom to ';
+const Login_instruction = 'masukkan email dan password untuk masuk';
+const Masuk = 'Masuk';
+const backgroundLogin = 'https://i.ibb.co/hcMj0wv/images.jpg';
 
 const Constants = {
   Login_Title,
@@ -14,6 +18,10 @@ const Constants = {
   Home_Text,
   Email,
   Password,
+  App,
+  Welcome,
+  Login_instruction,
+  Masuk,
   backgroundLogin,
 };
 
