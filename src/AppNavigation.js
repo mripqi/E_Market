@@ -57,18 +57,16 @@ const AppNavigation = ({isLoading, changeLoading}) => {
 
   useEffect(() => {
     AsyncStorage.getItem('@token').then(result => {
-      console.log(result);
       dispatch(setToken(result, 'token'));
-
       const timer = setTimeout(() => {
         changeLoading();
-      }, 2000);
+      }, 1500);
       return () => clearTimeout(timer);
     });
   }, []);
 
   const ReduxToken = useSelector(state => state.LoginReducer.token);
-  console.log(ReduxToken);
+
   if (isLoading) {
     return <AuthCheckScreen />;
   }

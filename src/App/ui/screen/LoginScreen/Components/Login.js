@@ -18,11 +18,13 @@ import {setToken} from '@app/redux';
 import LOGIN_API from '@app/utils/loginApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CartIcon from '@app/ui/assets/cart.svg';
+import EyeIcon from '@app/ui/assets/eye.svg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [toggleLogin, setToggleLogin] = useState(false);
+  const [ShowPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
@@ -87,13 +89,34 @@ const Login = () => {
               )}
               <View>
                 <Text style={styles.textTitle}>{Constants.Password}</Text>
-                <TextInput
-                  placeholder={Constants.Password}
-                  style={styles.input}
-                  placeholderTextColor={'black'}
-                  secureTextEntry={true}
-                  onChangeText={e => setPassword(e)}
-                />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    borderWidth: 1,
+                    borderColor: 'black',
+                    marginBottom: 15,
+                    paddingLeft: 20,
+                    width: '90%',
+                    alignSelf: 'center',
+                    backgroundColor: '#e6edec',
+                  }}>
+                  <TextInput
+                    placeholder={Constants.Password}
+                    width={'87%'}
+                    style={{color: 'black'}}
+                    placeholderTextColor={'black'}
+                    secureTextEntry={!ShowPassword}
+                    onChangeText={e => setPassword(e)}
+                  />
+                  <EyeIcon
+                    onPress={() => setShowPassword(!ShowPassword)}
+                    width={30}
+                    height={30}
+                    style={{marginRight: 10}}
+                  />
+                </View>
               </View>
               <View style={{alignItems: 'center', marginTop: 20}}>
                 <TouchableOpacity
