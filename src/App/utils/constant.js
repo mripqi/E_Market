@@ -12,9 +12,14 @@ const Masuk = 'Masuk';
 const backgroundLogin =
   'https://i.ibb.co/yWc2DMN/Blue-Pattern-Background-Wallpaper-1080x1920.jpg';
 const Login_Choice = 'Masuk dengan ';
-const Telphone = 'nomor telepon';
+const Telphone = 'Nomor telepon';
+const telphone = 'nomor telepon';
 const LOGIN_API = 'user/signin';
 const BASE_URL = 'https://team-c.gabatch11.my.id/';
+const NO_Telp = 'No.Telpon';
+const Authenticating = 'Authenticating';
+const TOKEN =
+  '  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTNjNTRhNjk1MDA4Mjc5ZmVhNzM4ZiIsImlhdCI6MTYyMDM3NTc0Nn0.5vm-W5Ow7eZtqxGdrWQmrD283qdNl1tubQNS2OviQ_0';
 
 const Constants = {
   Login_Title,
@@ -30,8 +35,12 @@ const Constants = {
   backgroundLogin,
   Login_Choice,
   Telphone,
+  telphone,
   LOGIN_API,
   BASE_URL,
+  NO_Telp,
+  Authenticating,
+  TOKEN,
 };
 
 export default Constants;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,11 +7,15 @@ import {Provider} from 'react-redux';
 import {store} from '@app/redux';
 
 const App = () => {
+  const [TokenCheck, setTokenCheck] = useState(true);
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Provider store={store}>
-          <AppNavigation />
+          <AppNavigation
+            isLoading={TokenCheck}
+            changeLoading={() => setTokenCheck(false)}
+          />
         </Provider>
       </NavigationContainer>
     </SafeAreaProvider>

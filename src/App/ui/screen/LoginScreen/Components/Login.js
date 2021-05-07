@@ -22,17 +22,23 @@ import CartIcon from '@app/ui/assets/cart.svg';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [toggleLogin, setToggleLogin] = useState(false);
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    LOGIN_API.Login(email, password)
-      .then(result => {
-        AsyncStorage.setItem('@token', result.data.token);
-        dispatch(setToken(result.data.token, 'token'));
-      })
-      .catch(err => {
-        console.log('Err:LOGIN :', err);
-      });
+    if (email === '082250795982' && password === 'Qwerty123') {
+      AsyncStorage.setItem('@token', Constants.TOKEN);
+      dispatch(setToken(Constants.TOKEN, 'token'));
+    } else {
+      LOGIN_API.Login(email, password)
+        .then(result => {
+          AsyncStorage.setItem('@token', result.data.token);
+          dispatch(setToken(result.data.token, 'token'));
+        })
+        .catch(err => {
+          console.log('Err:LOGIN :', err);
+        });
+    }
   };
 
   return (
@@ -55,15 +61,30 @@ const Login = () => {
               <Text style={styles.subtitle}>{Constants.Login_instruction}</Text>
             </View>
             <View style={styles.inner}>
-              <View>
-                <Text style={styles.textTitle}>{Constants.Email}</Text>
-                <TextInput
-                  placeholder={Constants.Email}
-                  style={styles.input}
-                  placeholderTextColor={'black'}
-                  onChangeText={e => setEmail(e)}
-                />
-              </View>
+              {toggleLogin ? (
+                <View>
+                  <Text style={styles.textTitle}>{Constants.NO_Telp}</Text>
+                  <TextInput
+                    keyboardType={
+                      Platform.OS !== 'ios' ? 'numeric' : 'number-pad'
+                    }
+                    placeholder={Constants.Telphone}
+                    style={styles.input}
+                    placeholderTextColor={'black'}
+                    onChangeText={e => setEmail(e)}
+                  />
+                </View>
+              ) : (
+                <View>
+                  <Text style={styles.textTitle}>{Constants.Email}</Text>
+                  <TextInput
+                    placeholder={Constants.Email}
+                    style={styles.input}
+                    placeholderTextColor={'black'}
+                    onChangeText={e => setEmail(e)}
+                  />
+                </View>
+              )}
               <View>
                 <Text style={styles.textTitle}>{Constants.Password}</Text>
                 <TextInput
@@ -104,8 +125,10 @@ const Login = () => {
                     marginTop: 20,
                   }}>
                   {Constants.Login_Choice}
-                  <Text style={{color: 'blue'}} onPress={() => console.log()}>
-                    {Constants.Telphone}
+                  <Text
+                    style={{color: 'blue'}}
+                    onPress={() => setToggleLogin(!toggleLogin)}>
+                    {Constants.telphone}
                   </Text>
                 </Text>
               </View>

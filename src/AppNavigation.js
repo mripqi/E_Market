@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import HomeScreen from '@app/ui/screen/HomeScreen/Index';
+import AuthCheckScreen from '@app/ui/screen/AuthScreen/index';
 import LoginScreen from '@app/ui/screen/LoginScreen/Index';
 import ProfileScreen from '@app/ui/screen/ProfileScreen/Index';
 import HomeIcon from '@app/ui/assets/Home_Tab.svg';
 import ProfileIcon from '@app/ui/assets/Profile_Tab.svg';
 
 import {useSelector} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {setToken} from '@app/redux';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -48,8 +52,26 @@ const MyBottomTabs = () => {
   );
 };
 
-const AppNavigation = () => {
+const AppNavigation = ({isLoading, changeLoading}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    AsyncStorage.getItem('@token').then(result => {
+      console.log(result);
+      dispatch(setToken(result, 'token'));
+
+      const timer = setTimeout(() => {
+        changeLoading();
+      }, 2000);
+      return () => clearTimeout(timer);
+    });
+  }, []);
+
   const ReduxToken = useSelector(state => state.LoginReducer.token);
+  console.log(ReduxToken);
+  if (isLoading) {
+    return <AuthCheckScreen />;
+  }
   return (
     <Stack.Navigator>
       {ReduxToken === null ? (
