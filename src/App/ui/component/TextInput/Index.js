@@ -12,8 +12,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     color: 'black',
     marginBottom: 15,
-    marginLeft: 30,
-    marginRight: 30,
     paddingLeft: 20,
     width: '90%',
   },

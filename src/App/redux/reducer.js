@@ -1,8 +1,7 @@
 import {combineReducers} from 'redux';
 
 const initialLogin = {
-  email: '',
-  password: '',
+  token: null,
 };
 
 const initialProfile = {
@@ -10,17 +9,20 @@ const initialProfile = {
   jobs: '',
 };
 
-const loginReducer = (state = initialLogin, action) => {
+const LoginReducer = (state = initialLogin, action) => {
+  if (action.type === 'SET_TOKEN') {
+    return {...state, [action.inputType]: action.inputValue};
+  }
   return state;
 };
 
-const profileReducer = (state = initialProfile, action) => {
+const ProfileReducer = (state = initialProfile, action) => {
   return state;
 };
 
 const reducer = combineReducers({
-  loginReducer,
-  profileReducer,
+  LoginReducer,
+  ProfileReducer,
 });
 
 export default reducer;

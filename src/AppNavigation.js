@@ -8,6 +8,8 @@ import ProfileScreen from '@app/ui/screen/ProfileScreen/Index';
 import HomeIcon from '@app/ui/assets/Home_Tab.svg';
 import ProfileIcon from '@app/ui/assets/Profile_Tab.svg';
 
+import {useSelector} from 'react-redux';
+
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
@@ -47,18 +49,22 @@ const MyBottomTabs = () => {
 };
 
 const AppNavigation = () => {
+  const ReduxToken = useSelector(state => state.LoginReducer.token);
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name={'Login'}
-        component={LoginScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name={'Home'}
-        component={MyBottomTabs}
-        options={{headerShown: false}}
-      />
+      {ReduxToken === null ? (
+        <Stack.Screen
+          name={'Login'}
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+      ) : (
+        <Stack.Screen
+          name={'Home'}
+          component={MyBottomTabs}
+          options={{headerShown: false}}
+        />
+      )}
     </Stack.Navigator>
   );
 };

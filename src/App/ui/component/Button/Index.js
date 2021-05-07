@@ -10,8 +10,6 @@ export default function ButtonComponent({handleClick, text, color, textColor}) {
         style={{
           paddingVertical: 10,
           paddingHorizontal: 15,
-          borderColor: 'black',
-          borderWidth: 1,
           borderRadius: 5,
           backgroundColor: color,
           alignItems: 'center',
