@@ -1,25 +1,23 @@
-import React from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-import {store} from '@app/utils/dummyData';
+import React, {useEffect} from 'react';
+import {Text, View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image';
-const DEVICE = Dimensions.get('window');
 import ClockIcon from '@app/ui/assets/svg/clock.svg';
 import ShopIcon from '@app/ui/assets/svg/shop.svg';
+import {useSelector} from 'react-redux';
+import {sizeWidth} from '@app/utils/sizeHelper';
 
 export default function ProductScreen() {
-  const data = store;
-  const [dataFilter, setDataFilter] = React.useState(store);
+  const data = useSelector(state => state.ProductReducer);
+
+  const [dataFilter, setDataFilter] = React.useState(data);
+
+  useEffect(() => {
+    setDataFilter(data);
+  }, [dataFilter, data]);
 
   const searchQuery = input => {
     if (input == '') {
-      setDataFilter(data);
+      setDataFilter(dataFilter.length);
     } else {
       const filtered = data.filter(p =>
         p.nama.toLowerCase().includes(input.toLowerCase()),
@@ -33,81 +31,70 @@ export default function ProductScreen() {
       <FlatList
         horizontal={false}
         numColumns={2}
+        keyExtractor={e => e.id}
+        listKey={e => e.id}
         data={dataFilter}
-        keyExtractor={data => data.id}
-        listKey={data => data.id}
         renderItem={({item}) => {
           return (
-            <FlatList
-              horizontal={false}
-              numColumns={2}
-              keyExtractor={e => e.id}
-              listKey={e => e.id}
-              data={item.Product}
-              renderItem={e => {
-                return (
-                  <TouchableOpacity style={styles.itemContainer}>
-                    <FastImage
-                      style={styles.itemImage}
-                      source={e.item.image}
-                      resizeMode={FastImage.resizeMode.cover}>
-                      <Text
-                        numberOfLines={1}
-                        style={{
-                          color: 'white',
-                          fontSize: 15,
-                          fontWeight: 'bold',
-                          marginTop: '65%',
-                          marginLeft: 10,
-                        }}>
-                        {e.item.name}
-                      </Text>
-                    </FastImage>
-                    <Text
-                      style={
-                        item.state
-                          ? {
-                              color: '#2bc27d',
-                              paddingLeft: 10,
-                              paddingTop: 10,
-                            }
-                          : {
-                              color: 'red',
-                              paddingLeft: 10,
-                              paddingTop: 10,
-                            }
-                      }>
-                      <ClockIcon
-                        style={
-                          item.state
-                            ? {
-                                backgroundColor: '#2bc27d',
-                                borderRadius: 50,
-                                paddingRight: 10,
-                              }
-                            : {
-                                backgroundColor: 'red',
-                                borderRadius: 50,
-                                paddingRight: 10,
-                              }
+            <TouchableOpacity style={styles.itemContainer}>
+              <FastImage
+                style={styles.itemImage}
+                source={item.image}
+                resizeMode={FastImage.resizeMode.cover}>
+                <Text
+                  numberOfLines={1}
+                  style={{
+                    color: 'white',
+                    fontSize: 15,
+                    fontWeight: 'bold',
+                    marginTop: '65%',
+                    marginLeft: 10,
+                  }}>
+                  {item.name}
+                </Text>
+              </FastImage>
+              <Text
+                style={
+                  item.state
+                    ? {
+                        color: '#2bc27d',
+                        paddingLeft: 10,
+                        paddingTop: 10,
+                      }
+                    : {
+                        color: 'red',
+                        paddingLeft: 10,
+                        paddingTop: 10,
+                      }
+                }>
+                <ClockIcon
+                  style={
+                    item.state
+                      ? {
+                          backgroundColor: '#2bc27d',
+                          borderRadius: 50,
+                          paddingRight: 10,
                         }
-                      />
-                      {item.state ? '  Warung Buka' : '  Warung Tutup'}
-                    </Text>
-                    <Text style={styles.itemName}>
-                      <ShopIcon
-                        style={{
-                          width: 20,
-                          height: 20,
-                          marginRight: 5,
-                        }}
-                      />
-                      {'  ' + item.name}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              }}
-            />
+                      : {
+                          backgroundColor: 'red',
+                          borderRadius: 50,
+                          paddingRight: 10,
+                        }
+                  }
+                />
+                {item.state ? '  Warung Buka' : '  Warung Tutup'}
+              </Text>
+              <Text style={styles.itemName}>
+                <ShopIcon
+                  style={{
+                    width: 20,
+                    height: 20,
+                    marginRight: 5,
+                  }}
+                />
+                {'  ' + item.storename}
+              </Text>
+            </TouchableOpacity>
           );
         }}
       />
@@ -129,7 +116,7 @@ const styles = StyleSheet.create({
   },
 
   itemContainer: {
-    width: DEVICE.width * 0.44,
+    width: sizeWidth(44),
     justifyContent: 'center',
     paddingBottom: 20,
     marginBottom: 15,

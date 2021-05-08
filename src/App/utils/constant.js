@@ -32,6 +32,8 @@ const egg3 = require('@app/ui/assets/product/download.jpeg');
 const egg4 = require('@app/ui/assets/product/images1.jpeg');
 const egg5 = require('@app/ui/assets/product/Excess-egg-consumption-linked-with-increased-risk-of-diabetes-study.jpg');
 const egg6 = require('@app/ui/assets/product/images.jpeg');
+const chicken1 = require('@app/ui/assets/product/5f7179288c95d.jpg');
+const chicken2 = require('@app/ui/assets/product/ch-maple-roast-chicken-horizontal-articleLarge-v2.jpg');
 
 const PRODUCT_IMAGE = {
   chicken_1:
@@ -54,6 +56,8 @@ const PRODUCT_IMAGE = {
   egg4,
   egg5,
   egg6,
+  chicken1,
+  chicken2,
 };
 
 const Constants = {

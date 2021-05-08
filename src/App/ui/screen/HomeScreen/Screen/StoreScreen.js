@@ -1,24 +1,17 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-import {store} from '@app/utils/dummyData';
+import {Text, View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+
 import FastImage from 'react-native-fast-image';
 import AddressPinIcon from '@app/ui/assets/svg/location_pin.svg';
 import DistancePinIcon from '@app/ui/assets/svg/destination.svg';
 import StarIcon from '@app/ui/assets/svg/star.svg';
 import ProfileIcon from '@app/ui/assets/svg/user.svg';
-
-const DEVICE = Dimensions.get('window');
+import {useSelector} from 'react-redux';
+import {sizeWidth} from '@app/utils/sizeHelper';
 
 export default function StoreScreen() {
-  const data = store;
-  const [dataFilter, setDataFilter] = React.useState(store);
+  const data = useSelector(state => state.DataReducer);
+  const [dataFilter, setDataFilter] = React.useState(data);
 
   const searchQuery = input => {
     if (input == '') {
@@ -31,6 +24,7 @@ export default function StoreScreen() {
       setDataFilter(filtered);
     }
   };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -47,7 +41,10 @@ export default function StoreScreen() {
               />
               <View style={{paddingLeft: 10, flex: 1}}>
                 <Text style={styles.itemName}>{item.name}</Text>
-                <Text style={styles.itemPrice}> {item.description}</Text>
+                <Text style={styles.itemPrice} numberOfLines={1}>
+                  {' '}
+                  {item.description}
+                </Text>
 
                 <Text style={styles.itemPrice}>
                   <AddressPinIcon width={15} height={15} />
@@ -110,7 +107,7 @@ const styles = StyleSheet.create({
   },
   //? Styling di sini
   itemContainer: {
-    width: DEVICE.width * 0.9,
+    width: sizeWidth(90),
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderRadius: 10,

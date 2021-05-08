@@ -9,7 +9,8 @@ export const store = [
     id: 1,
     name: 'Warung Eka',
     image: Constants.STORE_IMAGE._1,
-    description: 'TESTING 1st waarung',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
     address: 'JL MEDAN JAYA',
     owner: 'EKA',
     rating: 4,
@@ -25,13 +26,23 @@ export const store = [
         harga: 1300,
         rating: 5,
       },
+      {
+        id: 'A1',
+        name: 'Ayam',
+        image: Constants.PRODUCT_IMAGE.chicken1,
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        harga: 25000,
+        rating: 5,
+      },
     ],
   },
   {
     id: 2,
     name: 'Warung budi',
     image: Constants.STORE_IMAGE._2,
-    description: 'TESTING 2nd waarung',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
     address: 'JL JAYA JAYA',
     owner: 'Budi',
     rating: 4,
@@ -67,6 +78,15 @@ export const store = [
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
         harga: 1300,
+        rating: 5,
+      },
+      {
+        id: 'A1',
+        name: 'Ayam Bakar',
+        image: Constants.PRODUCT_IMAGE.chicken2,
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+        harga: 25000,
         rating: 5,
       },
     ],
@@ -136,5 +156,105 @@ export const store = [
         rating: 5,
       },
     ],
+  },
+];
+
+export const product = [
+  {
+    storeid: 1,
+    storename: 'Warung Eka',
+    state: true,
+    id: 'A',
+    name: 'Telur',
+    image: Constants.PRODUCT_IMAGE.egg1,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 1300,
+    rating: 5,
+  },
+  {
+    storeid: 1,
+    storename: 'Warung Eka',
+    state: true,
+    id: 'A1',
+    name: 'Ayam',
+    image: Constants.PRODUCT_IMAGE.chicken1,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 25000,
+    rating: 5,
+  },
+  {
+    storeid: 2,
+    storename: 'Warung budi',
+    state: false,
+    id: 'B',
+    name: 'Telur',
+    image: Constants.PRODUCT_IMAGE.egg2,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 1300,
+    rating: 5,
+  },
+  {
+    storeid: 3,
+    storename: 'Warung Airi',
+    state: false,
+    id: 'C',
+    name: 'Telur',
+    image: Constants.PRODUCT_IMAGE.egg3,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 1300,
+    rating: 5,
+  },
+  {
+    storeid: 3,
+    storename: 'Warung Airi',
+    state: false,
+    id: 'A1',
+    name: 'Ayam Bakar',
+    image: Constants.PRODUCT_IMAGE.chicken1,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 25000,
+    rating: 5,
+  },
+  {
+    storeid: 4,
+    storename: 'Warung Jukir',
+    state: true,
+    id: 'D',
+    name: 'Telur',
+    image: Constants.PRODUCT_IMAGE.egg4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 1300,
+    rating: 5,
+  },
+  {
+    storeid: 5,
+    storename: 'Warung Monhun',
+    state: true,
+    id: 'E',
+    name: 'Telur',
+    image: Constants.PRODUCT_IMAGE.egg5,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 1300,
+    rating: 5,
+  },
+  {
+    storeid: 6,
+    storename: 'Warung Sai',
+    state: true,
+
+    id: 'F',
+    name: 'Telur',
+    image: Constants.PRODUCT_IMAGE.egg6,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    harga: 1300,
+    rating: 5,
   },
 ];

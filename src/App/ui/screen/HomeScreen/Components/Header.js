@@ -10,7 +10,7 @@ import {
 import BackArrowWhite from '@app/ui/assets/svg/left-arrow.svg';
 import RoundedCancelDark from '@app/ui/assets/svg/RoundedCancelDark.svg';
 
-const SearchComponent = ({navigation}) => {
+const SearchComponent = ({navigation, data}) => {
   const [searchQueryText, setSearchQueryText] = useState('');
 
   const onChangeText = text => {

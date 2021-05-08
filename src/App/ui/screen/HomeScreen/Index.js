@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   useColorScheme,
@@ -11,12 +11,23 @@ import FocusStatusBar from '@app/ui/component/StatusBar/Index';
 import Home from './Components/Home';
 import Header from './Components/Header';
 import Constants from '@app/utils/constant';
+import {store, product} from '@app/utils/dummyData';
+import {useDispatch, useSelector} from 'react-redux';
+import {setData, setProduct} from '@app/redux';
 
 const Index = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setProduct(product));
+    dispatch(setData(store));
+  }, []);
+
+  const Data = useSelector(state => state.DataReducer);
 
   return (
     <SafeAreaView style={(backgroundStyle, {flex: 1})}>
@@ -30,8 +41,8 @@ const Index = ({navigation}) => {
           backgroundColor={!isDarkMode ? 'white' : 'black'}
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         />
-        <Header navigation={navigation} />
-        <Home />
+        <Header navigation={navigation} data={Data} />
+        <Home data={Data} />
       </ImageBackground>
     </SafeAreaView>
   );
