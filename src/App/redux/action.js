@@ -18,3 +18,10 @@ export const setProduct = e => {
     inputValue: e,
   };
 };
+
+export const setSearchRoute = e => {
+  return {
+    type: 'SET_SEARCH_ROUTE',
+    inputValue: e,
+  };
+};

@@ -11,27 +11,32 @@ import BackArrowWhite from '@app/ui/assets/svg/left-arrow.svg';
 import RoundedCancelDark from '@app/ui/assets/svg/RoundedCancelDark.svg';
 import {useDispatch, useSelector} from 'react-redux';
 import {setData, setProduct} from '@app/redux';
-import {product} from '@app/utils/dummyData';
+import {product, store} from '@app/utils/dummyData';
 
 const SearchComponent = ({navigation}) => {
-  const [searchQueryText, setSearchQueryText] = useState('');
-  const data = product;
   const dispatch = useDispatch();
+  const routeRedux = useSelector(state => state.SearchRouteReducer);
+
+  const data = routeRedux.route === 'Product' ? product : store;
+  const [searchQueryText, setSearchQueryText] = useState('');
 
   const onChangeText = input => {
-    console.log(input);
-    if (input == '') {
-      dispatch(setProduct(data));
+    if (input === '') {
+      routeRedux.route === 'Product'
+        ? dispatch(setProduct(data))
+        : dispatch(setData(data));
     } else {
       const filtered = data.filter(p =>
         p.name.toLowerCase().includes(input.toLowerCase()),
       );
-      dispatch(setProduct(filtered));
+
+      routeRedux.route === 'Product'
+        ? dispatch(setProduct(filtered))
+        : dispatch(setData(filtered));
     }
   };
   const delay = _.debounce(onChangeText, 1000);
 
-  const searchQuery = input => {};
   return (
     <View style={styles.container}>
       <TouchableOpacity

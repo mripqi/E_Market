@@ -3,17 +3,30 @@ import {Text, View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import ClockIcon from '@app/ui/assets/svg/clock.svg';
 import ShopIcon from '@app/ui/assets/svg/shop.svg';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {sizeWidth} from '@app/utils/sizeHelper';
+import {useFocusEffect, useRoute} from '@react-navigation/native';
+import {setSearchRoute} from '@app/redux';
 
 export default function ProductScreen() {
-  const data = useSelector(state => state.ProductReducer);
+  const route = useRoute();
+  const dispatch = useDispatch();
 
+  const data = useSelector(state => state.ProductReducer);
+  const routeRedux = useSelector(state => state.SearchRouteReducer);
   const [dataFilter, setDataFilter] = React.useState(data);
 
   useEffect(() => {
     setDataFilter(data);
   }, [dataFilter, data]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      route.name !== routeRedux.route
+        ? dispatch(setSearchRoute(route.name))
+        : '';
+    }, [dispatch, route, routeRedux]),
+  );
 
   const searchQuery = input => {
     if (input == '') {

@@ -4,6 +4,10 @@ const initialLogin = {
   token: null,
 };
 
+const initialSearchRoute = {
+  route: '',
+};
+
 const initialProfile = {
   name: 'test',
   jobs: '',
@@ -15,6 +19,13 @@ const initialProduct = [];
 const LoginReducer = (state = initialLogin, action) => {
   if (action.type === 'SET_TOKEN') {
     return {...state, [action.inputType]: action.inputValue};
+  }
+  return state;
+};
+
+const SearchRouteReducer = (state = initialSearchRoute, action) => {
+  if (action.type === 'SET_SEARCH_ROUTE') {
+    return {...state, route: action.inputValue};
   }
   return state;
 };
@@ -42,6 +53,7 @@ const reducer = combineReducers({
   ProfileReducer,
   DataReducer,
   ProductReducer,
+  SearchRouteReducer,
 });
 
 export default reducer;

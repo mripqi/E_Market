@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
@@ -6,24 +6,30 @@ import AddressPinIcon from '@app/ui/assets/svg/location_pin.svg';
 import DistancePinIcon from '@app/ui/assets/svg/destination.svg';
 import StarIcon from '@app/ui/assets/svg/star.svg';
 import ProfileIcon from '@app/ui/assets/svg/user.svg';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {sizeWidth} from '@app/utils/sizeHelper';
+import {useFocusEffect, useRoute} from '@react-navigation/core';
+import {setSearchRoute} from '@app/redux';
 
 export default function StoreScreen() {
+  const route = useRoute();
+  const dispatch = useDispatch();
+
   const data = useSelector(state => state.DataReducer);
+  const routeRedux = useSelector(state => state.SearchRouteReducer);
   const [dataFilter, setDataFilter] = React.useState(data);
 
-  const searchQuery = input => {
-    if (input == '') {
-      setDataFilter(data);
-    } else {
-      const filtered = data.filter(p =>
-        p.nama.toLowerCase().includes(input.toLowerCase()),
-      );
-      console.log(filtered);
-      setDataFilter(filtered);
-    }
-  };
+  useEffect(() => {
+    setDataFilter(data);
+  }, [dataFilter, data]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      route.name !== routeRedux.route
+        ? dispatch(setSearchRoute(route.name))
+        : '';
+    }, [dispatch, route, routeRedux]),
+  );
 
   return (
     <View style={styles.container}>
