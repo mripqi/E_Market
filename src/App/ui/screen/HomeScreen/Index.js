@@ -12,7 +12,7 @@ import Home from './Components/Home';
 import Header from './Components/Header';
 import Constants from '@app/utils/constant';
 import {store, product} from '@app/utils/dummyData';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {setData, setProduct} from '@app/redux';
 
 const Index = ({navigation}) => {
@@ -27,8 +27,6 @@ const Index = ({navigation}) => {
     dispatch(setData(store));
   }, []);
 
-  const Data = useSelector(state => state.DataReducer);
-
   return (
     <SafeAreaView style={(backgroundStyle, {flex: 1})}>
       <ImageBackground
@@ -41,8 +39,8 @@ const Index = ({navigation}) => {
           backgroundColor={!isDarkMode ? 'white' : 'black'}
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         />
-        <Header navigation={navigation} data={Data} />
-        <Home data={Data} />
+        <Header navigation={navigation} />
+        <Home />
       </ImageBackground>
     </SafeAreaView>
   );

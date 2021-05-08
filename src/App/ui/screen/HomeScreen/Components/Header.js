@@ -9,16 +9,29 @@ import {
 } from 'react-native';
 import BackArrowWhite from '@app/ui/assets/svg/left-arrow.svg';
 import RoundedCancelDark from '@app/ui/assets/svg/RoundedCancelDark.svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {setData, setProduct} from '@app/redux';
+import {product} from '@app/utils/dummyData';
 
-const SearchComponent = ({navigation, data}) => {
+const SearchComponent = ({navigation}) => {
   const [searchQueryText, setSearchQueryText] = useState('');
+  const data = product;
+  const dispatch = useDispatch();
 
-  const onChangeText = text => {
-    // setSearchQuery(text);
-    console.log('SEARCH', text);
+  const onChangeText = input => {
+    console.log(input);
+    if (input == '') {
+      dispatch(setProduct(data));
+    } else {
+      const filtered = data.filter(p =>
+        p.name.toLowerCase().includes(input.toLowerCase()),
+      );
+      dispatch(setProduct(filtered));
+    }
   };
   const delay = _.debounce(onChangeText, 1000);
 
+  const searchQuery = input => {};
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -42,7 +55,7 @@ const SearchComponent = ({navigation, data}) => {
         <TouchableOpacity
           onPress={() => {
             setSearchQueryText('');
-            // setSearchQuery('');
+            onChangeText('');
           }}>
           {searchQueryText !== '' && <RoundedCancelDark />}
         </TouchableOpacity>

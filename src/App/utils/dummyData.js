@@ -81,7 +81,7 @@ export const store = [
         rating: 5,
       },
       {
-        id: 'A1',
+        id: 'A2',
         name: 'Ayam Bakar',
         image: Constants.PRODUCT_IMAGE.chicken2,
         description:
