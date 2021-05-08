@@ -31,7 +31,10 @@ const MyHomeStack = () => {
 
 const MyBottomTabs = () => {
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+      }}>
       <BottomTab.Screen
         name={'Main'}
         component={MyHomeStack}
