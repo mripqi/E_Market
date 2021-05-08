@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import ProfileIcon from '@app/ui/assets/Profile_Tab.svg';
-import LogOutIcon from '@app/ui/assets/Logout_White.svg';
+import ProfileIcon from '@app/ui/assets/svg/Profile_Tab.svg';
+import LogOutIcon from '@app/ui/assets/svg/Logout_White.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch} from 'react-redux';
 import {setToken} from '@app/redux';

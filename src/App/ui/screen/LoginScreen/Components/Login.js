@@ -17,8 +17,8 @@ import {useDispatch} from 'react-redux';
 import {setToken} from '@app/redux';
 import LOGIN_API from '@app/utils/loginApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CartIcon from '@app/ui/assets/cart.svg';
-import EyeIcon from '@app/ui/assets/eye.svg';
+import CartIcon from '@app/ui/assets/svg/cart.svg';
+import EyeIcon from '@app/ui/assets/svg/eye.svg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -54,7 +54,7 @@ const Login = () => {
         style={styles.keyboardContainer}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
-            <View style={{marginTop: 30, marginLeft: 20}}>
+            <View style={{marginTop: 50, marginLeft: 20}}>
               <Text style={styles.title}>
                 {Constants.Welcome + ' ' + Constants.App}
                 <CartIcon width={25} height={25} style={{paddingLeft: 10}} />
@@ -181,7 +181,6 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 30,
     borderTopEndRadius: 30,
     marginTop: '20%',
-    marginBottom: 20,
     paddingTop: 40,
     paddingBottom: 20,
   },

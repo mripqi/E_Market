@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StatusBar, StyleSheet, Text} from 'react-native';
-import SplashLogo from '@app/ui/assets/react.svg';
+import SplashLogo from '@app/ui/assets/svg/react.svg';
 import Constants from '@app/utils/constant';
 
 const AuthCheckScreen = () => {

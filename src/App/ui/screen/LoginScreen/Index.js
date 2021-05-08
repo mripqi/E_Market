@@ -14,7 +14,7 @@ const Index = ({navigation}) => {
   return (
     <SafeAreaView style={(backgroundStyle, {flex: 1})}>
       <FocusStatusBar
-        translucent={false}
+        translucent={true}
         backgroundColor={!isDarkMode ? 'white' : 'black'}
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />

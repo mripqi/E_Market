@@ -1,24 +1,35 @@
 import React from 'react';
-import {View, useColorScheme, StyleSheet} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Section from '@app/ui/component/Section/Index';
-import Constants from '@app/utils/constant';
+import {View, StyleSheet} from 'react-native';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import ProductScreen from '@app/ui/screen/HomeScreen/Screen/ProductScreen';
+import StoreScreen from '@app/ui/screen/HomeScreen/Screen/StoreScreen';
 
 const Home = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
-      flex: 1,
-    },
-  });
+  const Toptab = createMaterialTopTabNavigator();
 
   return (
-    <View style={styles.container}>
-      <Section title={Constants.Home_Title}>{Constants.Home_Text}</Section>
+    <View style={{flex: 1}}>
+      <Toptab.Navigator
+        style={{borderRadius: 30}}
+        tabBarOptions={{
+          labelStyle: {
+            color: 'blue',
+          },
+          indicatorStyle: {
+            backgroundColor: '#2bc27d',
+          },
+        }}>
+        <Toptab.Screen name={'Product'} component={ProductScreen} />
+        <Toptab.Screen name={'Warung'} component={StoreScreen} />
+      </Toptab.Navigator>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default Home;

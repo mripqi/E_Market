@@ -6,8 +6,8 @@ import HomeScreen from '@app/ui/screen/HomeScreen/Index';
 import AuthCheckScreen from '@app/ui/screen/AuthScreen/index';
 import LoginScreen from '@app/ui/screen/LoginScreen/Index';
 import ProfileScreen from '@app/ui/screen/ProfileScreen/Index';
-import HomeIcon from '@app/ui/assets/Home_Tab.svg';
-import ProfileIcon from '@app/ui/assets/Profile_Tab.svg';
+import HomeIcon from '@app/ui/assets/svg/Home_Tab.svg';
+import ProfileIcon from '@app/ui/assets/svg/Profile_Tab.svg';
 
 import {useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
