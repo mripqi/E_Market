@@ -1,10 +1,31 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import ProfileIcon from '@app/ui/assets/Profile_Tab.svg';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import ProfileIcon from '@app/ui/assets/svg/Profile_Tab.svg';
+import LogOutIcon from '@app/ui/assets/svg/Logout_White.svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {setToken} from '@app/redux';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  const handleLogOut = async () => {
+    await AsyncStorage.removeItem('@token');
+    dispatch(setToken(null, 'token'));
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={{
+          zIndex: 1,
+          position: 'absolute',
+          top: 30,
+          right: 20,
+        }}
+        onPress={() => handleLogOut()}>
+        <LogOutIcon color={'white'} width={35} height={35} />
+      </TouchableOpacity>
       <Text style={styles.title}>About Me</Text>
       <View style={styles.icon}>
         <ProfileIcon color={'white'} width={90} height={90} />
