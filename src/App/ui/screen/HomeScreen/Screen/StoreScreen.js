@@ -11,7 +11,7 @@ import {sizeWidth} from '@app/utils/sizeHelper';
 import {useFocusEffect, useRoute} from '@react-navigation/core';
 import {setSearchRoute} from '@app/redux';
 
-export default function StoreScreen() {
+export default function StoreScreen({navigation}) {
   const route = useRoute();
   const dispatch = useDispatch();
 
@@ -39,7 +39,9 @@ export default function StoreScreen() {
         data={dataFilter}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity style={styles.itemContainer}>
+            <TouchableOpacity
+              style={styles.itemContainer}
+              onPress={() => navigation.navigate('Detail', {item})}>
               <FastImage
                 style={styles.itemImage}
                 source={{uri: item.image}}
@@ -53,15 +55,11 @@ export default function StoreScreen() {
                 </Text>
 
                 <Text style={styles.itemPrice}>
-                  <AddressPinIcon width={15} height={15} />
+                  <AddressPinIcon width={15} height={15} style={styles.icon} />
                   {item.address}
                 </Text>
                 <Text style={styles.itemPrice}>
-                  <ProfileIcon
-                    width={15}
-                    height={15}
-                    style={{borderRadius: 100}}
-                  />{' '}
+                  <ProfileIcon width={15} height={15} style={styles.icon} />
                   {item.owner}
                 </Text>
                 <View
@@ -70,11 +68,16 @@ export default function StoreScreen() {
                     justifyContent: 'space-between',
                   }}>
                   <Text style={styles.itemPrice}>
-                    <DistancePinIcon width={15} height={15} />
+                    <DistancePinIcon
+                      width={15}
+                      height={15}
+                      style={styles.icon}
+                    />
                     {item.distance}
                   </Text>
                   <Text style={styles.itemPrice}>
-                    <StarIcon width={15} height={15} /> {item.rating}
+                    <StarIcon width={15} height={15} style={styles.icon} />
+                    {item.rating}
                   </Text>
                   <Text
                     style={{
@@ -152,5 +155,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
+  },
+  icon: {
+    marginRight: 5,
   },
 });

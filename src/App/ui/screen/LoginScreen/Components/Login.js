@@ -59,7 +59,6 @@ const Login = () => {
                 {Constants.Welcome + ' ' + Constants.App}
                 <CartIcon width={25} height={25} style={{paddingLeft: 10}} />
               </Text>
-
               <Text style={styles.subtitle}>{Constants.Login_instruction}</Text>
             </View>
             <View style={styles.inner}>

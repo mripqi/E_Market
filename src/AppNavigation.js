@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -6,6 +6,7 @@ import HomeScreen from '@app/ui/screen/HomeScreen/Index';
 import AuthCheckScreen from '@app/ui/screen/AuthScreen/index';
 import LoginScreen from '@app/ui/screen/LoginScreen/Index';
 import ProfileScreen from '@app/ui/screen/ProfileScreen/Index';
+import DetailScreen from '@app/ui/screen/DetailScreen/index';
 import HomeIcon from '@app/ui/assets/svg/Home_Tab.svg';
 import ProfileIcon from '@app/ui/assets/svg/Profile_Tab.svg';
 
@@ -82,11 +83,18 @@ const AppNavigation = ({isLoading, changeLoading}) => {
           options={{headerShown: false}}
         />
       ) : (
-        <Stack.Screen
-          name={'Home'}
-          component={MyBottomTabs}
-          options={{headerShown: false}}
-        />
+        <>
+          <Stack.Screen
+            name={'Home'}
+            component={MyBottomTabs}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={'Detail'}
+            component={DetailScreen}
+            options={{headerShown: false}}
+          />
+        </>
       )}
     </Stack.Navigator>
   );

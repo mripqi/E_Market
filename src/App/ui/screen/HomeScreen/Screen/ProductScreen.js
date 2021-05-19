@@ -28,17 +28,6 @@ export default function ProductScreen() {
     }, [dispatch, route, routeRedux]),
   );
 
-  const searchQuery = input => {
-    if (input == '') {
-      setDataFilter(dataFilter.length);
-    } else {
-      const filtered = data.filter(p =>
-        p.nama.toLowerCase().includes(input.toLowerCase()),
-      );
-      console.log(filtered);
-      setDataFilter(filtered);
-    }
-  };
   return (
     <View style={styles.container}>
       <FlatList
